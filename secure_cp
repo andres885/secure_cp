@@ -2,7 +2,7 @@
 
 ORIGEN="/var/www/DocumentRoot"
 DESTINO_BASE="/home/usuario/Desarrollo/Web/Example/bkp"
-NOMBRE_BASE="AlmaFerrer"
+NOMBRE_BASE="DocumentRoot"
 
 # Encontrar y procesar el último número
 ULTIMO=$(find "$DESTINO_BASE" -maxdepth 1 -type d -name "${NOMBRE_BASE}.*" |
