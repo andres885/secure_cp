@@ -1,0 +1,29 @@
+#!/bin/bash
+
+ORIGEN="/var/www/DocumentRoot"
+DESTINO_BASE="/home/usuario/Desarrollo/Web/Example/bkp"
+NOMBRE_BASE="AlmaFerrer"
+
+# Encontrar y procesar el último número
+ULTIMO=$(find "$DESTINO_BASE" -maxdepth 1 -type d -name "${NOMBRE_BASE}.*" |
+    grep -Eo '[0-9]+$' |
+    sort -n |
+    tail -1)
+
+# Forzar base decimal explícitamente
+ULTIMO_DECIMAL=$((10#${ULTIMO:-0}))
+PROXIMO=$((ULTIMO_DECIMAL + 1))
+PROXIMO_FORMATEADO=$(printf "%03d" $PROXIMO)
+DESTINO_FINAL="$DESTINO_BASE/${NOMBRE_BASE}.${PROXIMO_FORMATEADO}"
+
+echo "Creando backup: $DESTINO_FINAL"
+
+# Verificar y crear
+[ -d "$DESTINO_FINAL" ] && {
+    echo "ERROR: $DESTINO_FINAL ya existe"
+    exit 1
+}
+mkdir -p "$DESTINO_FINAL"
+
+rsync -av --exclude='public_html/img' --exclude='vendor' --exclude='public_html/videos' "$ORIGEN/" "$DESTINO_FINAL/" &&
+    echo "✅ Backup completado: $DESTINO_FINAL"
