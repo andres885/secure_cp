@@ -26,7 +26,7 @@ It automatically generates sequential backup directories (e.g. `DocumentRoot.001
 
    ---
 
-## 2. Edit configuration paths
+2. **Edit configuration paths**
 
 Open the script with your preferred text editor and modify the following lines to match your environment:
 
@@ -40,7 +40,7 @@ NOMBRE_BASE="DocumentRoot"
 - `DESTINO_BASE` → directory where backups will be stored.  
 - `NOMBRE_BASE` → base name used for the backup directories.
 
-## 3. Run the script
+3. **Run the script**
 
 Execute the script from your terminal:
 
