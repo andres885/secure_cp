@@ -10,6 +10,7 @@ It automatically generates sequential backup directories (e.g. `DocumentRoot.001
 - Creates automatically numbered backup directories.
 - Prevents overwriting existing backups.
 - Skips redundant or heavy data (such as images or videos) according to your exclusion rules.
+- Allows full customization of excluded directories and files.
 - Simple and fast – ideal for local or remote server backup routines.
 
 ---
@@ -26,33 +27,46 @@ It automatically generates sequential backup directories (e.g. `DocumentRoot.001
 
 2. **Edit configuration paths**
 
-Open the script with your preferred text editor and modify the following lines to match your environment:
+   Open the script with your preferred text editor and modify the following lines to match your environment:
 
-```bash
-ORIGEN="/var/www/DocumentRoot"
-DESTINO_BASE="/home/usuario/Desarrollo/Web/Example/bkp"
-NOMBRE_BASE="DocumentRoot"
-```
+   ```bash
+   ORIGEN="/var/www/DocumentRoot"
+   DESTINO_BASE="/home/usuario/Desarrollo/Web/Example/bkp"
+   NOMBRE_BASE="DocumentRoot"
+   ```
 
-- `ORIGEN` → path to your source directory (e.g., your web root).  
-- `DESTINO_BASE` → directory where backups will be stored.  
-- `NOMBRE_BASE` → base name used for the backup directories.
+   - `ORIGEN` → path to your source directory (e.g., your web root).  
+   - `DESTINO_BASE` → directory where backups will be stored.  
+   - `NOMBRE_BASE` → base name used for the backup directories.
 
-3. **Run the script**
+3. **Edit excluded directories (optional)**
 
-Execute the script from your terminal:
+   You can define which folders or files should be ignored during the backup process by modifying the `--exclude` parameters inside the script.  
+   For example:
 
-```bash
-./secure_cp
-```
+   ```bash
+   --exclude='public_html/img' \
+   --exclude='vendor' \
+   --exclude='public_html/videos'
+   ```
 
-The script will create a new backup directory such as:
+   Add or remove exclusions as needed to avoid copying redundant, heavy, or dynamically generated data.
 
-```
-/home/usuario/Desarrollo/Web/Example/bkp/DocumentRoot.001
-```
+4. **Run the script**
 
-Each new execution will increment the backup index automatically (`DocumentRoot.002`, `DocumentRoot.003`, …).
+   Execute the script from your terminal:
+
+   ```bash
+   ./secure_cp
+   ```
+
+   The script will create a new backup directory such as:
+
+   ```
+   /home/usuario/Desarrollo/Web/Example/bkp/DocumentRoot.001
+   ```
+
+   Each new execution will increment the backup index automatically (`DocumentRoot.002`, `DocumentRoot.003`, …).
 
 ---
 
@@ -73,3 +87,9 @@ Then simply run:
 ```
 
 ---
+
+## License
+
+This project is licensed under the **GNU General Public License v3.0 (GPLv3)**.  
+You are free to use, modify, and redistribute this software under the terms of the GPLv3.  
+See the [LICENSE](LICENSE) file for more details.
