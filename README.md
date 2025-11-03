@@ -24,8 +24,6 @@ It automatically generates sequential backup directories (e.g. `DocumentRoot.001
    chmod +x secure_cp
    ```
 
-   ---
-
 2. **Edit configuration paths**
 
 Open the script with your preferred text editor and modify the following lines to match your environment:
