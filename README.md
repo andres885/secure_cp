@@ -86,6 +86,8 @@ Then simply run:
 ./secure_cp
 ```
 
+![Script output example](screenshot.png)
+
 ---
 
 ## License
